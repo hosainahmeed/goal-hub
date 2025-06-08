@@ -14,6 +14,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AboutMe from '../components/profile-component/sections/AboutMe';
 import Chat from '../components/profile-component/sections/Chat';
 import NotificationScreen from '../screens/NotificationScreen';
+import SearchScreen from '../screens/SearchScreen';
 const ProfileStack = createNativeStackNavigator();
 const GroupStack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ function HomeStackScreen() {
     <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="HomeMain" component={HomeScreen} />
       <HomeStack.Screen name="Notification" component={NotificationScreen} />
+      <HomeStack.Screen name="Search" component={SearchScreen} />
     </HomeStack.Navigator>
   );
 }

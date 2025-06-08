@@ -8,9 +8,11 @@ import {
   Text,
   TouchableOpacity,
   Keyboard,
+  StatusBar,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {globalStyles, colors, typography} from '../styles/globalStyles';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const SearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -44,10 +46,13 @@ const SearchScreen = () => {
   );
 
   return (
-    <View style={globalStyles.container}>
+    <SafeAreaView style={globalStyles.container}>
+      <StatusBar barStyle="dark-content" />
       {/* Search Header */}
       <View style={styles.searchHeader}>
-        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.goBack()}>
           <Image
             source={require('../assets/logo.png')}
             style={styles.backIcon}
@@ -69,7 +74,9 @@ const SearchScreen = () => {
             returnKeyType="search"
           />
           {searchQuery.length > 0 && (
-            <TouchableOpacity activeOpacity={0.8} onPress={() => setSearchQuery('')}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => setSearchQuery('')}>
               <Image
                 source={require('../assets/logo.png')}
                 style={styles.closeIcon}
@@ -98,7 +105,7 @@ const SearchScreen = () => {
           </Text>
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 

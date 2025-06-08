@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {
   View,
   FlatList,
@@ -205,4 +205,4 @@ const styles = {
   },
 };
 
-export default NotificationScreen;
+export default memo(NotificationScreen);
