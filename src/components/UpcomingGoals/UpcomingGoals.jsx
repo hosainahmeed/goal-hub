@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 // UpcomingGoals.js
 import React, {memo} from 'react';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
@@ -9,7 +10,13 @@ function UpcomingGoals() {
       <Text style={[typography.heading2, styles.heading]}>Upcoming Goal</Text>
 
       <View style={[globalStyles.card, styles.card]}>
-        <View style={globalStyles.iconWrapper}>
+        <View
+          style={{
+            ...globalStyles.iconWrapper,
+            height: 50,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
           <Image
             source={{
               uri: 'https://img.icons8.com/ios-filled/50/open-book--v2.png',
@@ -66,6 +73,9 @@ const styles = {
   card: {
     flexDirection: 'row',
     backgroundColor: '#e5f0ff',
+    borderRadius: 12,
+    padding: 16,
+    alignItems: 'center',
   },
   icon: {
     width: 28,

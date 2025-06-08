@@ -77,9 +77,6 @@ export const globalStyles = StyleSheet.create({
   iconWrapper: {
     backgroundColor: colors.background,
     borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 'fit-content',
     padding: 10,
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 1},
