@@ -37,7 +37,7 @@ export default function Root() {
             return <IconButton icon={iconName} size={size} color={color} />;
           },
         })}>
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" options={{headerShown: false}} component={HomeScreen} />
         <Tab.Screen name="Goals" component={GoalScreen} />
         <Tab.Screen name="Group" component={GroupScreen} />
         <Tab.Screen name="Leaderboard" component={LeaderBoardScreen} />

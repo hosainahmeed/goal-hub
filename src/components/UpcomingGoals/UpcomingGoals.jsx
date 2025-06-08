@@ -1,20 +1,15 @@
+// UpcomingGoals.js
 import React, {memo} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {globalStyles, colors, typography} from '../../styles/globalStyles';
 
 function UpcomingGoals() {
   return (
-    <SafeAreaView>
-      <Text style={styles.heading}>Upcoming Goal</Text>
+    <View style={styles.container}>
+      <Text style={[typography.heading2, styles.heading]}>Upcoming Goal</Text>
 
-      <View style={styles.card}>
-        <View style={styles.iconWrapper}>
+      <View style={[globalStyles.card, styles.card]}>
+        <View style={globalStyles.iconWrapper}>
           <Image
             source={{
               uri: 'https://img.icons8.com/ios-filled/50/open-book--v2.png',
@@ -24,118 +19,82 @@ function UpcomingGoals() {
         </View>
 
         <View style={styles.content}>
-          <View style={styles.titleRow}>
-            <Text style={styles.title}>Creative Writers </Text>
-            <Text style={styles.memberText}>(3k members)</Text>
+          <View style={[globalStyles.row, styles.titleRow]}>
+            <Text style={[typography.body, styles.title]}>
+              Creative Writers
+            </Text>
+            <Text style={[typography.caption, styles.memberText]}>
+              (3k members)
+            </Text>
           </View>
 
-          <Text style={styles.description}>
+          <Text style={[typography.caption, styles.description]}>
             A group for those who love starting the day with a refreshing run.
           </Text>
 
-          <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.joinButton}>
-              <Text style={styles.joinText}>Join challenges</Text>
+          <View style={[globalStyles.row, globalStyles.gapSmall]}>
+            <TouchableOpacity
+              style={[globalStyles.button, globalStyles.buttonSecondary]}>
+              <Text
+                style={[globalStyles.buttonText, globalStyles.buttonTextDark]}>
+                Join challenges
+              </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.leaveButton}>
-              <Text style={styles.leaveText}>Leave</Text>
+            <TouchableOpacity
+              style={[globalStyles.button, globalStyles.buttonSuccess]}>
+              <Text
+                style={[globalStyles.buttonText, globalStyles.buttonTextLight]}>
+                Leave
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        <Text style={styles.groupTag}>Public groups</Text>
+        <Text style={[typography.small, styles.groupTag]}>Public groups</Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
-export default memo(UpcomingGoals);
 
-const styles = StyleSheet.create({
+const styles = {
+  container: {
+    marginTop: 16,
+  },
   heading: {
-    fontSize: 20,
-    fontWeight: '600',
-    marginBottom: 10,
+    marginBottom: 12,
   },
   card: {
-    backgroundColor: '#e5f0ff',
-    borderRadius: 12,
-    padding: 16,
     flexDirection: 'row',
-    alignItems: 'flex-center',
-    position: 'relative',
-  },
-  iconWrapper: {
-    backgroundColor: '#fff',
-    height: 'fit-content',
-    padding: 10,
-    borderRadius: 12,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
-    marginRight: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#e5f0ff',
   },
   icon: {
     width: 28,
     height: 28,
-    tintColor: '#000',
+    tintColor: colors.textPrimary,
   },
   content: {
     flex: 1,
+    marginLeft: 12,
   },
   titleRow: {
-    flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'baseline',
   },
   title: {
-    fontSize: 16,
-    fontWeight: '600',
+    marginRight: 8,
   },
   memberText: {
-    fontSize: 14,
-    color: '#555',
+    color: colors.textSecondary,
   },
   description: {
-    fontSize: 13,
-    color: '#555',
     marginTop: 4,
     marginBottom: 10,
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    gap: 10,
-  },
-  joinButton: {
-    backgroundColor: '#facc15',
-    paddingVertical: 6,
-    paddingHorizontal: 10,
-    borderRadius: 6,
-  },
-  joinText: {
-    fontSize: 13,
-    fontWeight: '600',
-    color: '#000',
-  },
-  leaveButton: {
-    backgroundColor: '#10b981',
-    paddingVertical: 6,
-    paddingHorizontal: 10,
-    borderRadius: 6,
-  },
-  leaveText: {
-    fontSize: 13,
-    fontWeight: '600',
-    color: '#fff',
   },
   groupTag: {
     position: 'absolute',
     top: 10,
     right: 10,
-    fontSize: 12,
-    color: '#6b7280',
   },
-});
+};
+
+export default memo(UpcomingGoals);

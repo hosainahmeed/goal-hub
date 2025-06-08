@@ -1,40 +1,40 @@
-/* eslint-disable no-unused-vars */
-import {FlatList, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useMemo} from 'react';
+import {FlatList, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import Card from '../components/home-componetns/Card';
 import GoalCategories from '../components/GoalCategories/GoalCategories';
 import UpcomingGoals from '../components/UpcomingGoals/UpcomingGoals';
 import TodayPlannings from '../components/TodayPlannings/TodayPlannings';
-
+import {globalStyles} from '../styles/globalStyles';
+import HeaderWithSearch from '../components/Search/HeaderWithSearch';
+import Card from '../components/home-componetns/Card';
 export default function HomeScreen() {
-  const homeScreenComponents = [
-    <Card />,
-    <GoalCategories />,
-    <UpcomingGoals />,
-    <TodayPlannings />,
-    <Card />,
-    <Card />,
-  ];
+  const components = useMemo(
+    () => [
+      HeaderWithSearch,
+      GoalCategories,
+      UpcomingGoals,
+      TodayPlannings,
+      Card,
+    ],
+    [],
+  );
+
+  const renderItem = ({item: Component}) => (
+    <View style={globalStyles.container}>
+      <Component />
+    </View>
+  );
+
   return (
-    <SafeAreaProvider style={styles.container}>
+    <SafeAreaProvider style={{...globalStyles.container, marginTop: 16}}>
       <FlatList
-        showsHorizontalScrollIndicator={false}
-        style={styles.flatList}
-        data={homeScreenComponents}
-        renderItem={({item}) => <View style={styles.flatList}>{item}</View>}
+        showsVerticalScrollIndicator={false}
+        data={components}
+        renderItem={renderItem}
         keyExtractor={(_, index) => index.toString()}
+        contentContainerStyle={globalStyles.gapMedium}
       />
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-  },
-  flatList: {
-    flex: 1,
-    marginBottom: 16,
-  },
-});
