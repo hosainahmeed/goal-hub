@@ -10,6 +10,30 @@ import ProfileScreen from '../screens/ProfileScreen';
 import GoalScreen from '../screens/GoalScreen';
 import GroupScreen from '../screens/GroupScreen';
 import LeaderBoardScreen from '../screens/LeaderBoardScreen';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AboutMe from '../components/profile-component/sections/AboutMe';
+import Chat from '../components/profile-component/sections/Chat';
+const ProfileStack = createNativeStackNavigator();
+const GroupStack = createNativeStackNavigator();
+
+function ProfileStackScreen() {
+  return (
+    <ProfileStack.Navigator screenOptions={{headerShown: false}}>
+      <ProfileStack.Screen name="ProfileMain" component={ProfileScreen} />
+      <ProfileStack.Screen name="about-me" component={AboutMe} />
+      <ProfileStack.Screen name="chat" component={Chat} />
+    </ProfileStack.Navigator>
+  );
+}
+
+function GroupStackScreen() {
+  return (
+    <GroupStack.Navigator screenOptions={{headerShown: false}}>
+      <GroupStack.Screen name="GroupMain" component={GroupScreen} />
+      <GroupStack.Screen name="chat" component={Chat} />
+    </GroupStack.Navigator>
+  );
+}
 
 export default function Root() {
   const Tab = createBottomTabNavigator();
@@ -37,11 +61,31 @@ export default function Root() {
             return <IconButton icon={iconName} size={size} color={color} />;
           },
         })}>
-        <Tab.Screen name="Home" options={{headerShown: false}} component={HomeScreen} />
-        <Tab.Screen name="Goals" component={GoalScreen} />
-        <Tab.Screen name="Group" component={GroupScreen} />
-        <Tab.Screen name="Leaderboard" component={LeaderBoardScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen
+          name="Home"
+          options={{headerShown: false}}
+          component={HomeScreen}
+        />
+        <Tab.Screen
+          name="Goals"
+          options={{headerShown: false}}
+          component={GoalScreen}
+        />
+        <Tab.Screen
+          name="Group"
+          component={GroupStackScreen}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Leaderboard"
+          options={{headerShown: false}}
+          component={LeaderBoardScreen}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileStackScreen}
+          options={{headerShown: false}}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

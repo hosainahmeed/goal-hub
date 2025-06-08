@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {memo, useMemo} from 'react';
-import {FlatList, View} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {FlatList, StatusBar, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import GoalCategories from '../components/GoalCategories/GoalCategories';
 import UpcomingGoals from '../components/UpcomingGoals/UpcomingGoals';
 import TodayPlannings from '../components/TodayPlannings/TodayPlannings';
@@ -27,7 +27,8 @@ function HomeScreen() {
   );
 
   return (
-    <SafeAreaProvider style={{...globalStyles.container, marginTop: 16}}>
+    <SafeAreaView style={{...globalStyles.container}}>
+      <StatusBar barStyle="dark-content" />
       <FlatList
         showsVerticalScrollIndicator={false}
         data={components}
@@ -35,7 +36,7 @@ function HomeScreen() {
         keyExtractor={(_, index) => index.toString()}
         contentContainerStyle={globalStyles.gapMedium}
       />
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 }
 

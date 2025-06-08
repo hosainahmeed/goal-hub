@@ -1,6 +1,7 @@
 // MenuItems.js
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {memo} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const MenuItem = memo(({icon, label, onPress}) => (
   <TouchableOpacity
@@ -16,6 +17,7 @@ const MenuItem = memo(({icon, label, onPress}) => (
 ));
 
 function MenuItems() {
+  const navigation = useNavigation();
   const menuItems = [
     {icon: '👤', label: 'About me', screen: 'about-me'},
     {icon: '💬', label: 'Chat', screen: 'chat'},
@@ -32,7 +34,7 @@ function MenuItems() {
           key={`menu-item-${index}`}
           icon={item.icon}
           label={item.label}
-          onPress={() => console.log(`Navigating to ${item.screen}`)}
+          onPress={() => navigation.navigate(item.screen)}
         />
       ))}
     </View>

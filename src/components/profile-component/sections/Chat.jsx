@@ -1,11 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text} from 'react-native';
 import React from 'react';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function Chat() {
   return (
-    <View>
+    <SafeAreaView>
+      <StatusBar barStyle="dark-content" />
       <Text>Chat</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 

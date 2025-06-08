@@ -1,11 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function GoalScreen() {
   return (
-    <View>
+    <SafeAreaView>
+      <StatusBar barStyle="dark-content" />
       <Text>GoalScreen</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 

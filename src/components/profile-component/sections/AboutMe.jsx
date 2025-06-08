@@ -1,24 +1,21 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {Text, StyleSheet, ScrollView} from 'react-native';
+import ProfileInfo from '../ProfileInfo';
+import {globalStyles} from '../../../styles/globalStyles';
 
 export default function AboutMe() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={{...globalStyles.container, paddingHorizontal: 0}}>
+      <ProfileInfo />
       <Text style={styles.title}>About Me</Text>
       <Text style={styles.content}>
         Here you can add information about yourself...
       </Text>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    margin: 20,
-    padding: 20,
-    borderRadius: 10,
-  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
