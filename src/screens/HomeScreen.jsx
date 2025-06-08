@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useMemo} from 'react';
+import React, {memo, useMemo} from 'react';
 import {FlatList, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import GoalCategories from '../components/GoalCategories/GoalCategories';
@@ -8,7 +8,7 @@ import TodayPlannings from '../components/TodayPlannings/TodayPlannings';
 import {globalStyles} from '../styles/globalStyles';
 import HeaderWithSearch from '../components/Search/HeaderWithSearch';
 import Card from '../components/home-componetns/Card';
-export default function HomeScreen() {
+function HomeScreen() {
   const components = useMemo(
     () => [
       HeaderWithSearch,
@@ -38,3 +38,5 @@ export default function HomeScreen() {
     </SafeAreaProvider>
   );
 }
+
+export default memo(HomeScreen);
