@@ -1,13 +1,19 @@
-/* eslint-disable no-unused-vars */
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
+import ProfileInfo from '../components/profile-component/ProfileInfo';
+import MenuItems from '../components/profile-component/MenuItems';
 
 export default function ProfileScreen() {
   return (
-    <View>
-      <Text>ProfileScreen</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <ProfileInfo />
+      <MenuItems />
+    </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
