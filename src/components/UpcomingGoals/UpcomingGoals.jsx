@@ -41,6 +41,7 @@ function UpcomingGoals() {
 
           <View style={[globalStyles.row, globalStyles.gapSmall]}>
             <TouchableOpacity
+              activeOpacity={0.8}
               style={[globalStyles.button, globalStyles.buttonSecondary]}>
               <Text
                 style={[globalStyles.buttonText, globalStyles.buttonTextDark]}>
@@ -48,6 +49,7 @@ function UpcomingGoals() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
+              activeOpacity={0.8}
               style={[globalStyles.button, globalStyles.buttonSuccess]}>
               <Text
                 style={[globalStyles.buttonText, globalStyles.buttonTextLight]}>

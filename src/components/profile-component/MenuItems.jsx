@@ -7,7 +7,7 @@ const MenuItem = memo(({icon, label, onPress}) => (
   <TouchableOpacity
     style={styles.menuItem}
     onPress={onPress}
-    activeOpacity={0.7}>
+    activeOpacity={0.8}>
     <View style={styles.menuLeft}>
       <Text style={styles.menuIcon}>{icon}</Text>
       <Text style={styles.menuText}>{label}</Text>

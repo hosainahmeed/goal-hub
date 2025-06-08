@@ -39,7 +39,7 @@ function ProfileInfo() {
           <View style={styles.verifiedBadge}>
             <Text style={styles.checkmark}>✓</Text>
           </View>
-          <TouchableOpacity style={styles.signOutButton}>
+          <TouchableOpacity activeOpacity={0.8} style={styles.signOutButton}>
             <Text style={styles.signOutIcon}>↗</Text>
             <Text style={styles.signOutText}>Sign out</Text>
           </TouchableOpacity>

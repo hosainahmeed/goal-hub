@@ -1,7 +1,15 @@
 import React from 'react';
-import {View, FlatList, Image, Text, TouchableOpacity} from 'react-native';
+import {
+  View,
+  FlatList,
+  Image,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {globalStyles, colors, typography} from '../styles/globalStyles';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const NotificationScreen = () => {
   const navigation = useNavigation();
@@ -42,6 +50,7 @@ const NotificationScreen = () => {
 
   const renderItem = ({item}) => (
     <TouchableOpacity
+      activeOpacity={0.8}
       style={[styles.notificationItem, !item.read && styles.unreadItem]}
       onPress={() =>
         navigation.navigate('NotificationDetail', {notification: item})
@@ -73,21 +82,26 @@ const NotificationScreen = () => {
   };
 
   return (
-    <View style={globalStyles.container}>
+    <SafeAreaView style={globalStyles.container}>
+      <StatusBar barStyle="dark-content" />
       {/* Notification Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
-            source={require('../assets/logo.png')}
+            source={require('../assets/back-icon.png')}
             style={styles.backIcon}
           />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Notifications</Text>
         <TouchableOpacity
+          activeOpacity={0.8}
           onPress={() => {
-            /* Mark all as read */
+            navigation.popToTop();
           }}>
-          <Text style={styles.markAllText}>Mark all as read</Text>
+          <Image
+            source={require('../assets/home-icon.png')}
+            style={styles.backIcon}
+          />
         </TouchableOpacity>
       </View>
 
@@ -107,7 +121,7 @@ const NotificationScreen = () => {
           </View>
         }
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -128,10 +142,6 @@ const styles = {
   headerTitle: {
     ...typography.heading2,
     color: colors.textPrimary,
-  },
-  markAllText: {
-    ...typography.caption,
-    color: colors.primary,
   },
   listContainer: {
     paddingBottom: 16,

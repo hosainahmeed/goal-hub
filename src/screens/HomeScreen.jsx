@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {memo, useMemo} from 'react';
 import {FlatList, StatusBar, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';

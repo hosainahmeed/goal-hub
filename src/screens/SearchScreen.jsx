@@ -35,6 +35,7 @@ const SearchScreen = () => {
 
   const renderItem = ({item}) => (
     <TouchableOpacity
+      activeOpacity={0.8}
       style={styles.resultItem}
       onPress={() => navigation.navigate('Detail', {item})}>
       <Text style={styles.resultTitle}>{item.title}</Text>
@@ -46,7 +47,7 @@ const SearchScreen = () => {
     <View style={globalStyles.container}>
       {/* Search Header */}
       <View style={styles.searchHeader}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.goBack()}>
           <Image
             source={require('../assets/logo.png')}
             style={styles.backIcon}
@@ -68,7 +69,7 @@ const SearchScreen = () => {
             returnKeyType="search"
           />
           {searchQuery.length > 0 && (
-            <TouchableOpacity onPress={() => setSearchQuery('')}>
+            <TouchableOpacity activeOpacity={0.8} onPress={() => setSearchQuery('')}>
               <Image
                 source={require('../assets/logo.png')}
                 style={styles.closeIcon}

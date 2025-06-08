@@ -19,7 +19,7 @@ const HeaderWithSearch = () => {
       {/* Search Bar */}
       <TouchableOpacity
         style={styles.searchContainer}
-        activeOpacity={0.7}
+        activeOpacity={0.8}
         onPress={() => navigation.navigate('Search')}>
         <Image
           source={require('../../assets/search-icons.png')}
@@ -36,6 +36,7 @@ const HeaderWithSearch = () => {
 
       {/* Notification Icon */}
       <TouchableOpacity
+        activeOpacity={0.8}
         onPress={() => navigation.navigate('Notification')}
         style={styles.notificationButton}>
         <Image

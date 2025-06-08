@@ -30,7 +30,7 @@ const initialPlans = [
 
 const PlanningCard = memo(({icon, title, time, done, onToggle}) => (
   <View style={[globalStyles.card, styles.card]}>
-    <TouchableOpacity style={styles.checkbox} onPress={onToggle}>
+    <TouchableOpacity activeOpacity={0.8} style={styles.checkbox} onPress={onToggle}>
       {done && <View style={styles.checkedMark} />}
     </TouchableOpacity>
 

@@ -13,8 +13,19 @@ import LeaderBoardScreen from '../screens/LeaderBoardScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AboutMe from '../components/profile-component/sections/AboutMe';
 import Chat from '../components/profile-component/sections/Chat';
+import NotificationScreen from '../screens/NotificationScreen';
 const ProfileStack = createNativeStackNavigator();
 const GroupStack = createNativeStackNavigator();
+
+const HomeStack = createNativeStackNavigator();
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
+      <HomeStack.Screen name="HomeMain" component={HomeScreen} />
+      <HomeStack.Screen name="Notification" component={NotificationScreen} />
+    </HomeStack.Navigator>
+  );
+}
 
 function ProfileStackScreen() {
   return (
@@ -64,7 +75,7 @@ export default function Root() {
         <Tab.Screen
           name="Home"
           options={{headerShown: false}}
-          component={HomeScreen}
+          component={HomeStackScreen}
         />
         <Tab.Screen
           name="Goals"
