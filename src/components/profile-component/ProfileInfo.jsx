@@ -37,7 +37,7 @@ function ProfileInfo() {
         <View style={styles.nameContainer}>
           <Text style={styles.name}>Pixel Posse</Text>
           <View style={styles.verifiedBadge}>
-            <Text style={styles.checkmark}>✓</Text>
+            <Text style={globalStyles.checkmark}>✓</Text>
           </View>
           <TouchableOpacity activeOpacity={0.8} style={styles.signOutButton}>
             <Text style={styles.signOutIcon}>↗</Text>
@@ -91,11 +91,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 8,
-  },
-  checkmark: {
-    color: '#fff',
-    fontSize: 12,
-    fontWeight: 'bold',
   },
   signOutButton: {
     flexDirection: 'row',

@@ -40,7 +40,7 @@ function RecentFeed() {
   }, []);
 
   const renderItem = useCallback(
-    ({item}) => (loading ? <FeedSkeleton /> : <FeedCard item={item} />),
+    ({item}) => (loading ? <FeedSkeleton key={item.id} /> : <FeedCard key={item.id} item={item} />),
     [loading],
   );
 
@@ -57,7 +57,7 @@ function RecentFeed() {
       keyExtractor={keyExtractor}
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
-      ItemSeparatorComponent={() => <View style={styles.separator} />}
+      ItemSeparatorComponent={() => <View testID="separator" style={styles.separator} />}
     />
   );
 }

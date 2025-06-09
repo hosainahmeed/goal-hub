@@ -1,18 +1,192 @@
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
-import React, {memo} from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  Alert,
+  ActivityIndicator,
+  ScrollView,
+  StatusBar,
+} from 'react-native';
+import * as ImagePicker from 'react-native-image-picker';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderBar from '../components/Share/HeaderBar';
+import {globalStyles} from '../styles/globalStyles';
 
-function FeedScreen() {
+const CreateFeedScreen = () => {
+  const [caption, setCaption] = useState('');
+  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const pickImage = () => {
+    ImagePicker.launchImageLibrary({mediaType: 'photo', quality: 0.8}, res => {
+      if (res.assets?.[0]?.uri) {
+        setImage(res.assets[0].uri);
+      } else if (res.errorCode) {
+        Alert.alert('Error', res.errorMessage || 'Image selection failed');
+      }
+    });
+  };
+
+  const post = async () => {
+    if (!caption.trim() && !image) {
+      Alert.alert('Post Required', 'Add a photo or a caption');
+      return;
+    }
+    setLoading(true);
+    await new Promise(r => setTimeout(r, 1200));
+    setLoading(false);
+    Alert.alert('Posted!', 'Your post was successfully shared.');
+    setCaption('');
+    setImage(null);
+  };
+
   return (
-    <SafeAreaView>
-      <HeaderBar pageName={'Create Feed'} />
+    <SafeAreaView style={globalStyles.container}>
       <StatusBar barStyle="dark-content" />
-      <Text>FeedScreen</Text>
+      <HeaderBar pageName="Create Feed" />
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.title}>Choice image</Text>
+
+        <View style={styles.imageRow}>
+          {image ? (
+            <View style={styles.previewContainer}>
+              <TouchableOpacity
+                onPress={() => setImage(null)}
+                style={styles.closeButton}>
+                <Text style={styles.closeButtonText}>X</Text>
+              </TouchableOpacity>
+              <Image source={{uri: image}} style={styles.previewImage} />
+            </View>
+          ) : (
+            <TouchableOpacity style={styles.uploadBox} onPress={pickImage}>
+              <Text style={styles.uploadText}>+</Text>
+              <Text style={styles.uploadLabel}>Upload</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+
+        <Text style={styles.captionLabel}>Caption</Text>
+        <TextInput
+          placeholder="Write a caption..."
+          placeholderTextColor="#888"
+          style={styles.captionInput}
+          multiline
+          value={caption}
+          onChangeText={setCaption}
+        />
+
+        <TouchableOpacity
+          style={[styles.postButton, !caption && !image && {opacity: 0.5}]}
+          onPress={post}
+          disabled={loading || (!caption && !image)}>
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.postButtonText}>Post</Text>
+          )}
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
-}
+};
 
-export default memo(FeedScreen);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#fff',
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'flex-start',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    width: 24,
+    height: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: 12,
+    zIndex: 1,
+  },
+  closeButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 8,
+  },
+  imageRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    marginBottom: 16,
+  },
+  previewImage: {
+    width: 200,
+    height: 200,
+    borderRadius: 8,
+  },
+  previewContainer: {
+    width: 200,
+    height: 200,
+    borderRadius: 8,
+    backgroundColor: '#eee',
+  },
+  uploadBox: {
+    width: 200,
+    height: 200,
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: '#999',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+  },
+  uploadText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#888',
+  },
+  uploadLabel: {
+    fontSize: 12,
+    color: '#888',
+  },
+  captionLabel: {
+    fontSize: 14,
+    marginBottom: 4,
+  },
+  captionInput: {
+    minHeight: 120,
+    backgroundColor: '#f4f4f4',
+    borderRadius: 10,
+    padding: 10,
+    fontSize: 16,
+    color: '#000',
+    marginBottom: 24,
+  },
+  postButton: {
+    backgroundColor: '#000',
+    paddingVertical: 14,
+    borderRadius: 32,
+    alignItems: 'center',
+  },
+  postButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
 
-const styles = StyleSheet.create({});
+export default CreateFeedScreen;

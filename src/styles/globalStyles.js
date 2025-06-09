@@ -57,6 +57,11 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
   },
+  checkmark: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
   icon: {
     width: 24,
     height: 24,
