@@ -10,6 +10,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {globalStyles, colors, typography} from '../styles/globalStyles';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import HeaderBar from '../components/Share/HeaderBar';
 
 const NotificationScreen = () => {
   const navigation = useNavigation();
@@ -85,25 +86,7 @@ const NotificationScreen = () => {
     <SafeAreaView style={globalStyles.container}>
       <StatusBar barStyle="dark-content" />
       {/* Notification Header */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            source={require('../assets/back-icon.png')}
-            style={styles.backIcon}
-          />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Notifications</Text>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => {
-            navigation.popToTop();
-          }}>
-          <Image
-            source={require('../assets/home-icon.png')}
-            style={styles.backIcon}
-          />
-        </TouchableOpacity>
-      </View>
+      <HeaderBar pageName={'Notifications'} />
 
       {/* Notifications List */}
       <FlatList
@@ -126,23 +109,6 @@ const NotificationScreen = () => {
 };
 
 const styles = {
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
-  },
-  backIcon: {
-    width: 24,
-    height: 24,
-    tintColor: colors.textPrimary,
-  },
-  headerTitle: {
-    ...typography.heading2,
-    color: colors.textPrimary,
-  },
   listContainer: {
     paddingBottom: 16,
   },

@@ -52,9 +52,9 @@ const SearchScreen = () => {
       <View style={styles.searchHeader}>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.popToTop()}>
           <Image
-            source={require('../assets/logo.png')}
+            source={require('../assets/back-icon.png')}
             style={styles.backIcon}
           />
         </TouchableOpacity>

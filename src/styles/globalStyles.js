@@ -57,6 +57,10 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
   },
+  icon: {
+    width: 24,
+    height: 24,
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

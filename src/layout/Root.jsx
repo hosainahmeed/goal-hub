@@ -15,6 +15,7 @@ import AboutMe from '../components/profile-component/sections/AboutMe';
 import Chat from '../components/profile-component/sections/Chat';
 import NotificationScreen from '../screens/NotificationScreen';
 import SearchScreen from '../screens/SearchScreen';
+import FeedScreen from '../screens/FeedScreen';
 const ProfileStack = createNativeStackNavigator();
 const GroupStack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ function HomeStackScreen() {
       <HomeStack.Screen name="HomeMain" component={HomeScreen} />
       <HomeStack.Screen name="Notification" component={NotificationScreen} />
       <HomeStack.Screen name="Search" component={SearchScreen} />
+      <HomeStack.Screen name="CreateFeed" component={FeedScreen} />
     </HomeStack.Navigator>
   );
 }

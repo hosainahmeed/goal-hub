@@ -6,15 +6,19 @@ import UpcomingGoals from '../components/UpcomingGoals/UpcomingGoals';
 import TodayPlannings from '../components/TodayPlannings/TodayPlannings';
 import {globalStyles} from '../styles/globalStyles';
 import HeaderWithSearch from '../components/Search/HeaderWithSearch';
-import Card from '../components/home-componetns/Card';
+import IntroHeader from '../components/profile-component/sections/IntroHeader';
+import CreateFeedButton from '../components/home-componetns/Feed-related/CreateFeedButton';
+import RecentFeed from '../components/home-componetns/Feed-related/RecentFeed';
 function HomeScreen() {
   const components = useMemo(
     () => [
       HeaderWithSearch,
+      IntroHeader,
       GoalCategories,
       UpcomingGoals,
       TodayPlannings,
-      Card,
+      CreateFeedButton,
+      RecentFeed,
     ],
     [],
   );
