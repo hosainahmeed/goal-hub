@@ -1,11 +1,15 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import React, {memo} from 'react';
+import React, {memo, useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {globalStyles} from '../../../styles/globalStyles';
 
 function FeedCard({item}) {
+  const [liked, setLiked] = useState(false);
+  const handleLike = () => {
+    setLiked(!liked);
+  };
   return (
-    <View style={globalStyles.card}>
+    <View style={{...globalStyles.card}}>
       <View style={styles.header}>
         <Image source={{uri: item?.userAvatar}} style={styles.avatar} />
         <Text style={styles.username}>{item?.username}</Text>
@@ -14,8 +18,18 @@ function FeedCard({item}) {
       {item?.image && (
         <Image source={{uri: item?.image}} style={styles.postImage} />
       )}
-      <TouchableOpacity style={styles.likeButton}>
-        <Icon name="favorite-border" size={24} color="#333" />
+      <TouchableOpacity onPress={handleLike} style={styles.likeButton}>
+        {liked ? (
+          <Image
+            source={require('../../../assets/unlike.png')}
+            style={styles.likeIcon}
+          />
+        ) : (
+          <Image
+            source={require('../../../assets/like.png')}
+            style={styles.likeIcon}
+          />
+        )}
         {item?.likes > 0 && <Text style={styles.likeText}>{item?.likes}</Text>}
       </TouchableOpacity>
     </View>
@@ -29,6 +43,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 12,
+  },
+  likeIcon: {
+    width: 24,
+    height: 24,
   },
   avatar: {
     width: 32,

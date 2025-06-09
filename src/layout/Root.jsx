@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unstable-nested-components */
-import {StyleSheet} from 'react-native';
+import {Image, StyleSheet} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -16,6 +16,7 @@ import Chat from '../components/profile-component/sections/Chat';
 import NotificationScreen from '../screens/NotificationScreen';
 import SearchScreen from '../screens/SearchScreen';
 import FeedScreen from '../screens/FeedScreen';
+import {globalStyles} from '../styles/globalStyles';
 const ProfileStack = createNativeStackNavigator();
 const GroupStack = createNativeStackNavigator();
 
@@ -58,22 +59,72 @@ export default function Root() {
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
+          tabBarIcon: ({focused}) => {
             let iconName;
 
             if (route.name === 'Home') {
-              iconName = focused ? 'home' : 'home-outline';
+              iconName = focused ? (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/home-active.png')}
+                />
+              ) : (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/home.png')}
+                />
+              );
             } else if (route.name === 'Goals') {
-              iconName = focused ? 'magnify' : 'magnify';
+              iconName = focused ? (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/goal-active.png')}
+                />
+              ) : (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/goal.png')}
+                />
+              );
             } else if (route.name === 'Group') {
-              iconName = focused ? 'account-group' : 'account-group-outline';
+              iconName = focused ? (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/group-active.png')}
+                />
+              ) : (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/group.png')}
+                />
+              );
             } else if (route.name === 'Leaderboard') {
-              iconName = focused ? 'trophy' : 'trophy';
+              iconName = focused ? (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/leaderboard-active.png')}
+                />
+              ) : (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/leaderboard.png')}
+                />
+              );
             } else if (route.name === 'Profile') {
-              iconName = focused ? 'account' : 'account-outline';
+              iconName = focused ? (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/profile-active.png')}
+                />
+              ) : (
+                <Image
+                  style={globalStyles.icon}
+                  source={require('../assets/bottom-bar-icons/profile.png')}
+                />
+              );
             }
 
-            return <IconButton icon={iconName} size={size} color={color} />;
+            return iconName;
           },
         })}>
         <Tab.Screen

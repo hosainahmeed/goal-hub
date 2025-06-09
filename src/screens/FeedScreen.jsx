@@ -37,6 +37,7 @@ const CreateFeedScreen = () => {
       Alert.alert('Post Required', 'Add a photo or a caption');
       return;
     }
+    console.log(caption, image);
     setLoading(true);
     await new Promise(r => setTimeout(r, 1200));
     setLoading(false);
@@ -169,6 +170,7 @@ const styles = StyleSheet.create({
   },
   captionInput: {
     minHeight: 120,
+    maxHeight: 200,
     backgroundColor: '#f4f4f4',
     borderRadius: 10,
     padding: 10,

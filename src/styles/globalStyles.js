@@ -65,6 +65,7 @@ export const globalStyles = StyleSheet.create({
   icon: {
     width: 24,
     height: 24,
+    objectFit: 'cover',
   },
   row: {
     flexDirection: 'row',

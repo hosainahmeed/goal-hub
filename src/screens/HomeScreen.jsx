@@ -30,7 +30,7 @@ function HomeScreen() {
   );
 
   return (
-    <SafeAreaView style={{...globalStyles.container}}>
+    <SafeAreaView  style={globalStyles.container}>
       <StatusBar barStyle="dark-content" />
       <FlatList
         showsVerticalScrollIndicator={false}
