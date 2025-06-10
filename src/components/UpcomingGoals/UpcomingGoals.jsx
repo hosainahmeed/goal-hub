@@ -35,7 +35,7 @@ function UpcomingGoals() {
             </Text>
           </View>
 
-          <Text style={[typography.caption, styles.description]}>
+          <Text style={[typography.small, styles.description]}>
             A group for those who love starting the day with a refreshing run.
           </Text>
 
