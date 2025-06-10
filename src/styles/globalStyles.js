@@ -121,3 +121,36 @@ export const globalStyles = StyleSheet.create({
     color: colors.textPrimary,
   },
 });
+
+export const imgaeUpload = StyleSheet.create({
+  previewImage: {
+    width: 200,
+    height: 200,
+    borderRadius: 8,
+  },
+  previewContainer: {
+    width: 200,
+    height: 200,
+    borderRadius: 8,
+    backgroundColor: '#eee',
+  },
+  uploadBox: {
+    width: 200,
+    height: 200,
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: '#999',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+  },
+  uploadText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#888',
+  },
+  uploadLabel: {
+    fontSize: 12,
+    color: '#888',
+  },
+});

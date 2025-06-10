@@ -1,22 +1,25 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
+  Modal,
   StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderBar from '../components/Share/HeaderBar';
 import {globalStyles} from '../styles/globalStyles';
+import AddGoalModal from '../components/goal-screen-component/AddGoalModal';
 
 export default function GoalScreen() {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <SafeAreaView style={{...globalStyles.container, backgroundColor: '#fff'}}>
       <StatusBar barStyle="dark-content" />
       <HeaderBar pageName="My Goals" />
-      <View style={[globalStyles.row,globalStyles.spaceBetween]}>
+      <View style={[globalStyles.row, globalStyles.spaceBetween]}>
         <TouchableOpacity
           activeOpacity={0.8}
           style={[
@@ -41,10 +44,22 @@ export default function GoalScreen() {
               backgroundColor: '#D1D1D1',
               borderColor: '#D3D3D3',
               borderWidth: 1,
-            }
-          ]}>
+            },
+          ]}
+          onPress={() => setModalVisible(true)}>
           <Text style={styles.goalTitle}>+ Add new goal</Text>
         </TouchableOpacity>
+        <Modal
+          visible={modalVisible}
+          animationType="slide"
+          presentationStyle="formSheet"
+          statusBarTranslucent
+          hardwareAccelerated
+          transparent={false}>
+          <AddGoalModal
+            setModalVisible={setModalVisible}
+          />
+        </Modal>
       </View>
     </SafeAreaView>
   );

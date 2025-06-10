@@ -15,7 +15,7 @@ import {
 import * as ImagePicker from 'react-native-image-picker';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderBar from '../components/Share/HeaderBar';
-import {globalStyles} from '../styles/globalStyles';
+import {globalStyles, imgaeUpload} from '../styles/globalStyles';
 
 const CreateFeedScreen = () => {
   const [caption, setCaption] = useState('');
@@ -55,18 +55,18 @@ const CreateFeedScreen = () => {
 
         <View style={styles.imageRow}>
           {image ? (
-            <View style={styles.previewContainer}>
+            <View style={imgaeUpload.previewContainer}>
               <TouchableOpacity
                 onPress={() => setImage(null)}
                 style={styles.closeButton}>
                 <Text style={styles.closeButtonText}>X</Text>
               </TouchableOpacity>
-              <Image source={{uri: image}} style={styles.previewImage} />
+              <Image source={{uri: image}} style={imgaeUpload.previewImage} />
             </View>
           ) : (
-            <TouchableOpacity style={styles.uploadBox} onPress={pickImage}>
-              <Text style={styles.uploadText}>+</Text>
-              <Text style={styles.uploadLabel}>Upload</Text>
+            <TouchableOpacity style={imgaeUpload.uploadBox} onPress={pickImage}>
+              <Text style={imgaeUpload.uploadText}>+</Text>
+              <Text style={imgaeUpload.uploadLabel}>Upload</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -133,36 +133,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
     marginBottom: 16,
-  },
-  previewImage: {
-    width: 200,
-    height: 200,
-    borderRadius: 8,
-  },
-  previewContainer: {
-    width: 200,
-    height: 200,
-    borderRadius: 8,
-    backgroundColor: '#eee',
-  },
-  uploadBox: {
-    width: 200,
-    height: 200,
-    borderWidth: 1,
-    borderStyle: 'dashed',
-    borderColor: '#999',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 8,
-  },
-  uploadText: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#888',
-  },
-  uploadLabel: {
-    fontSize: 12,
-    color: '#888',
   },
   captionLabel: {
     fontSize: 14,

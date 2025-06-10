@@ -17,7 +17,11 @@ export default function HeaderBar({pageName}) {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => {
-          navigation.popToTop();
+          if (navigation.canGoBack()) {
+            navigation.goBack();
+          } else {
+            navigation.popToTop();
+          }
         }}>
         <Image
           source={require('../../assets/home-icon.png')}
