@@ -120,6 +120,12 @@ export const globalStyles = StyleSheet.create({
   buttonTextDark: {
     color: colors.textPrimary,
   },
+  textCenter: {
+    textAlign: 'center',
+  },
+  textRight: {
+    textAlign: 'right',
+  },
 });
 
 export const imgaeUpload = StyleSheet.create({
