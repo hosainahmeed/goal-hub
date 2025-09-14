@@ -11,7 +11,7 @@ const categories = [
   },
   {
     id: '2',
-    img: 'https://img.icons8.com/ios-filled/50/spinner-frame-6.png',
+    img: 'https://cdn-icons-png.flaticon.com/512/18706/18706055.png ',
     title: 'Life Style',
   },
   {
