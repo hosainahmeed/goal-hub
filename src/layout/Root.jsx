@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unstable-nested-components */
 import {Image, StyleSheet} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {IconButton} from 'react-native-paper';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import GoalScreen from '../screens/GoalScreen';
@@ -17,6 +15,7 @@ import NotificationScreen from '../screens/NotificationScreen';
 import SearchScreen from '../screens/SearchScreen';
 import FeedScreen from '../screens/FeedScreen';
 import {globalStyles} from '../styles/globalStyles';
+import {bottombarImage} from '../assets/bottom-bar-icons/bottombarImage';
 const ProfileStack = createNativeStackNavigator();
 const GroupStack = createNativeStackNavigator();
 
@@ -66,60 +65,54 @@ export default function Root() {
               iconName = focused ? (
                 <Image
                   style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/home-active.png')}
+                  source={bottombarImage.homeActive}
                 />
               ) : (
-                <Image
-                  style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/home.png')}
-                />
+                <Image style={globalStyles.icon} source={bottombarImage.home} />
               );
             } else if (route.name === 'Goals') {
               iconName = focused ? (
                 <Image
                   style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/goal-active.png')}
+                  source={bottombarImage.goalActive}
                 />
               ) : (
-                <Image
-                  style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/goal.png')}
-                />
+                <Image style={globalStyles.icon} source={bottombarImage.goal} />
               );
             } else if (route.name === 'Group') {
               iconName = focused ? (
                 <Image
                   style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/group-active.png')}
+                  source={bottombarImage.groupActive}
                 />
               ) : (
                 <Image
                   style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/group.png')}
+                  source={bottombarImage.group}
                 />
               );
             } else if (route.name === 'Leaderboard') {
               iconName = focused ? (
                 <Image
                   style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/leaderboard-active.png')}
+                  source={bottombarImage.leaderboardActive}
                 />
               ) : (
                 <Image
                   style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/leaderboard.png')}
+                  source={bottombarImage.leaderboard}
                 />
               );
             } else if (route.name === 'Profile') {
               iconName = focused ? (
                 <Image
                   style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/profile-active.png')}
+                  source={bottombarImage.profileActive}
                 />
               ) : (
                 <Image
                   style={globalStyles.icon}
-                  source={require('../assets/bottom-bar-icons/profile.png')}
+                  source={bottombarImage.profile}
                 />
               );
             }

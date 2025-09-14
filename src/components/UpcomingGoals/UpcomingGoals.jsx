@@ -27,10 +27,10 @@ function UpcomingGoals() {
 
         <View style={styles.content}>
           <View style={[globalStyles.row, styles.titleRow]}>
-            <Text style={[typography.body, styles.title]}>
+            <Text style={[typography.caption, styles.title]}>
               Creative Writers
             </Text>
-            <Text style={[typography.caption, styles.memberText]}>
+            <Text style={[typography.small, styles.memberText]}>
               (3k members)
             </Text>
           </View>
@@ -104,7 +104,7 @@ const styles = {
   },
   groupTag: {
     position: 'absolute',
-    top: 10,
+    top: 3,
     right: 10,
   },
 };
