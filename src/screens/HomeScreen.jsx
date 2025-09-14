@@ -9,6 +9,7 @@ import HeaderWithSearch from '../components/Search/HeaderWithSearch';
 import IntroHeader from '../components/profile-component/sections/IntroHeader';
 import CreateFeedButton from '../components/home-componetns/Feed-related/CreateFeedButton';
 import RecentFeed from '../components/home-componetns/Feed-related/RecentFeed';
+import Challange from '../components/big_challange/Challange';
 function HomeScreen() {
   const components = useMemo(
     () => [
@@ -17,6 +18,7 @@ function HomeScreen() {
       GoalCategories,
       UpcomingGoals,
       TodayPlannings,
+      Challange,
       CreateFeedButton,
       RecentFeed,
     ],
